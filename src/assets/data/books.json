@@ -1,0 +1,20 @@
+[
+  {
+    "title":"The Lord of the Rings",
+    "authors": [
+      {
+        "firstName":"JRR",
+        "lastName": "Tolkien"
+      }
+    ]
+  },
+  {
+    "title": "Prolog Programming for Artificial Intelligence",
+    "authors": [
+      {
+        "firstName":"Ivan",
+        "lastName":"Bratko"
+      }
+    ]
+  }
+]

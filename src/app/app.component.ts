@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {BookService} from './book.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  books$;
+
+  constructor(private bookService: BookService){}
+
+  fetchBooks() {
+    this.books$ = this.bookService.fetchBooks();
+  }
 }
