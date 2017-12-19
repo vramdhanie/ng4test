@@ -1,16 +1,32 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
+
+export interface Author {
+  firstname: String;
+  lastName: String;
+}
+
+export interface Book {
+  title: String;
+  authors: [Author];
+}
 
 @Injectable()
 export class BookService {
 
   constructor(private http: HttpClient) { }
 
-  fetchBooks(): Observable<Object> {
+  fetchBooks(): Observable<Book> {
+    const params = new HttpParams()
+      .set('id', '234')
+      .set('populateAuthor', 'true');
+
     return this
       .http
-      .get('/assets/data/books.json');
+      .get<Book>('/assets/data/books.json', {
+        params: params
+      });
   }
 
 }
