@@ -22,9 +22,12 @@ export class BookService {
       .set('id', '234')
       .set('populateAuthor', 'true');
 
+    // fail half of the time
+    const url = Math.random() < 0.5 ? '/assets/data/books_error.json' : '/assets/data/books.json';
+
     return this
       .http
-      .get<Book>('/assets/data/books.json', {
+      .get<Book>(url, {
         params: params
       });
   }
