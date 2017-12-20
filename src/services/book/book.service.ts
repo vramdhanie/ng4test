@@ -29,4 +29,20 @@ export class BookService {
       });
   }
 
+  createBook(): Observable<Book> {
+    const book = {
+      title: 'Firestarter',
+      authors: [
+        {
+          firstName: 'Stephen',
+          lastName: 'King'
+        }
+      ]
+    };
+    console.log('In the createBook method');
+     return this
+       .http
+       .post<Book>('/assets/data/books.json', book);
+  }
+
 }

@@ -6,6 +6,10 @@
     <div class="book" *ngFor="let book of books$ | async">{{ book.title }}</div>
   </div>
 
+  <div class="create">
+    <button (click)="createBook()">Create</button>
+  </div>
+
 </div>
 
 
