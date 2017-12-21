@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/retryWhen';
@@ -24,9 +24,14 @@ export class BookService {
   constructor(private http: HttpClient) { }
 
   fetchBooks(): Observable<Book> {
+    // this constructs a query string
     const params = new HttpParams()
       .set('id', '234')
       .set('populateAuthor', 'true');
+
+    // allow for customizing teh HttpHeaders sent with the request
+    const headers = new HttpHeaders()
+      .set('app-language', 'en');
 
     // fail half of the time
     const url = Math.random() < 0.5 ? '/assets/data/books_error.json' : '/assets/data/books.json';
@@ -34,7 +39,8 @@ export class BookService {
     return this
       .http
       .get<Book>(url, {
-        params: params
+        params: params,
+        headers: headers
       })
       // .retry(3) // use rxjs retry operator to automatically retry the call up to 3 times on failure.
       .retryWhen(err => {
