@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BookService } from '../services/book/book.service';
+import { FileUploadService } from '../services/fileUpload/file-upload.service';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { BookService } from '../services/book/book.service';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [ BookService ],
+  providers: [ BookService, FileUploadService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

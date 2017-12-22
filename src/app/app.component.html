@@ -14,6 +14,12 @@
     <strong>Error: </strong> {{message}}
   </div>
 
+
+  <h1>File Upload</h1>
+  <input type="file" #fileUpload>
+  <button (click)="uploadFile(fileUpload)">Upload</button>
+  {{progress}}
+
 </div>
 
 
